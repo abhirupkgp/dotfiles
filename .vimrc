@@ -1,3 +1,6 @@
+"TODO: check out other peoples vimrc
+" example: ryanb/dotfiles
+" example: thoughbots/dotfiles
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -17,16 +20,17 @@ Plugin 'tpope/vim-fugitive'
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
 " Git plugin not hosted on GitHub
-Plugin 'git://git.wincent.com/command-t.git'
+"Plugin 'git://git.wincent.com/command-t.git'
 " git repos on your local machine (i.e. when working on your own plugin)
-Plugin 'file:///home/gmarik/path/to/plugin'
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " Install L9 and avoid a Naming conflict if you've already installed a
 " different version somewhere else.
 " Plugin 'ascenator/L9', {'name': 'newL9'}
-
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'tpope/vim-surround'
+Plugin 'scrooloose/nerdtree'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -81,3 +85,15 @@ set ruler
 "
 "" Height of the command bar
 set cmdheight=2
+"" Ctrl P map
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+" Alt-hjkl split navigation
+nmap <silent> <A-h> :wincmd h<cr>
+nmap <silent> <A-j> :wincmd j<cr>
+nmap <silent> <A-k> :wincmd k<cr>
+nmap <silent> <A-l> :wincmd l<cr>
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
