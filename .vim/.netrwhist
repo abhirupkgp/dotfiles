@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/home/avi'
+let g:netrw_dirhist_2='/home/avi/Dropbox'
+let g:netrw_dirhist_3='/home/avi/Dropbox/Research'
+let g:netrw_dirhist_4='/home/avi/Dropbox'
+let g:netrw_dirhist_5='/home/avi'
