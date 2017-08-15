@@ -15,7 +15,7 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (blink-cursor-mode -1)
-
+(menu-bar-mode -1)
 (require 'package)
 (package-initialize)
 (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
@@ -75,6 +75,11 @@
 (setq reftex-plug-into-AUCTeX t)
 (setq TeX-PDF-mode t)
 
+;; ### Set Atril as the default PDF viewer.
+(eval-after-load "tex"
+  '(setcar (cdr (assoc 'output-pdf TeX-view-program-selection)) "Atril"))
+
+
 ;; Font customization by major mode.
 ;; this will be continuously updated as my tastes change.
 (progn
@@ -111,3 +116,38 @@
 
 (setq org-default-notes-file (concat org-directory "/notes.org"))
 (define-key global-map "\C-cc" 'org-capture)
+(put 'scroll-left 'disabled nil)
+
+;;c sharp mode
+(use-package csharp-mode
+  :ensure t
+  )
+(defun my-csharp-mode-hook ()
+  ;; enable the stuff you want for C# here
+  (electric-pair-local-mode 1) ;; Emacs 25
+  )
+(add-hook 'csharp-mode-hook 'my-csharp-mode-hook)
+
+;;multiple-cursors
+(require 'multiple-cursors)
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+
+;;expand-region
+(use-package expand-region
+  :ensure t
+  :init
+  (global-set-key (kbd "C-=") 'er/expand-region))
+
+;;ace-jump-mode
+(use-package ace-jump-mode
+  :ensure t)
+(autoload
+  'ace-jump-mode
+  "ace-jump-mode"
+  "Emacs quick move minor mode"
+  t)
+;;C-c SPC is ace jump character mode
+(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
