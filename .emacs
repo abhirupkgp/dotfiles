@@ -3,6 +3,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ido-enable-flex-matching t)
  '(inhibit-startup-screen t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -151,3 +152,38 @@
   t)
 ;;C-c SPC is ace jump character mode
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+
+;;ido mode
+(require 'ido)
+(ido-mode t)
+;;flex ido
+(use-package flx-ido
+  :ensure t)
+(require 'flx-ido)
+(ido-mode 1)
+(ido-everywhere 1)
+(flx-ido-mode 1)
+;; disable ido faces to see flx highlights.
+(setq ido-enable-flex-matching t)
+(setq ido-use-faces nil)
+(setq flx-ido-threshold 1000)
+
+
+;;ag.el
+(use-package ag
+  :ensure t)
+(setq ag-highlight-search t)
+(global-set-key (kbd "C-c f") 'ag-project)
+(global-set-key (kbd "C-c a") 'ag)
+(setq ag-reuse-buffers t)
+(add-hook 'ag-mode-hook
+          (lambda ()
+            (copy-face 'lazy-highlight 'ag-match-face)))
+
+;;projectile
+(use-package projectile
+  :ensure t
+  :config
+  (projectile-mode))
+
+

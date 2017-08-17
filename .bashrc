@@ -127,7 +127,7 @@ alias .4='cd ../../../../'
 alias .5='cd ../../../../..'
 
 alias clpb='xclip -sel clip'
-
+alias R='R --no-save'
 
 mkcdir () {
     mkdir -p $1
@@ -170,8 +170,15 @@ function extract {
 fi
 }
 
+## epub reader using epub.py (in ~/bin/)
+alias epub='python ~/bin/epub.py'
+
+
 ###############################
 ## exports
 ###############################
 # add ~/bin to $PATH
 export PATH="$HOME/bin:$PATH";
+
+# added by Anaconda3 4.4.0 installer
+export PATH="/home/avi/anaconda3/bin:$PATH"
